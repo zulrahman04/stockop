@@ -81,7 +81,7 @@ class Login_model extends CI_Model
     public function logout()
     {
         $this->session->unset_userdata(
-            array('user_id' => '', 'username' => '', 'nama' => '', 'user_level' => '', 'dept_id' => '', 'login_status' => false, 'timestamp' => '')
+            array('user_id' => '', 'username' => '', 'nama' => '', 'user_role' => '', 'dept_id' => '', 'login_status' => false, 'timestamp' => '')
         );
         $this->session->sess_destroy();
     }

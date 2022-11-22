@@ -27,9 +27,19 @@ class Dashboard_model extends CI_Model
         return $this->db->query("SELECT * FROM produk where barcode = '$code'")->row();
     }
 
+    public function getItemId($id)
+    {
+        return $this->db->query("SELECT * FROM produk where id = '$id'")->row();
+    }
+
     public function getExp($iditem, $id_toko)
     {
         return $this->db->select("*")->from("produk_detail")->where("id_produk", $iditem)->where("id_toko", $id_toko)->get()->result();
+    }
+
+    public function getItmNoBarcode()
+    {
+        return $this->db->select("*")->from("produk")->where("barcode IS NULL OR barcode = ''")->get()->result();
     }
 
     public function getQtyRed($iditem, $id_toko, $exp)

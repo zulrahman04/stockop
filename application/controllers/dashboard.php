@@ -8,6 +8,7 @@ class Dashboard extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Dashboard_model', 'dashboard');
+        is_logged_in();
     }
 
     public function index()
@@ -18,7 +19,6 @@ class Dashboard extends CI_Controller
         $this->data['page'] = $this->session->userdata('dashboarduri');
 
         $this->data['data'] = $this->dashboard->getToko();
-        // $this->data['data'] = json_decode($this->curl->simple_get($this->API.'index_get'));
 
         $this->load->view($this->layout, $this->data);
     }
@@ -32,6 +32,7 @@ class Dashboard extends CI_Controller
 
         $idtoko = $_GET['toko'];
         $this->data['toko'] = $this->dashboard->getTokoInpt($idtoko);
+        $this->data['itm'] = $this->dashboard->getItmNoBarcode();
         $this->load->view($this->layout, $this->data);
     }
 
@@ -39,6 +40,17 @@ class Dashboard extends CI_Controller
     {
         $code = $this->input->post('code');
         $res = $this->dashboard->getItemBarcode($code);
+        if ($res) {
+            echo json_encode($res);
+        } else {
+            echo json_encode('Gagal');
+        }
+    }
+
+    public function getProdukId()
+    {
+        $id = $this->input->post('id');
+        $res = $this->dashboard->getItemId($id);
         if ($res) {
             echo json_encode($res);
         } else {

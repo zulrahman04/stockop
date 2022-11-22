@@ -11,7 +11,7 @@
 
     <!-- <script type="text/javascript" src="<?= base_url() ?>instascan.min.js"></script> -->
 
-    <link rel="icon" href="<?= base_url() ?>img/favicon.png">
+    <link rel="icon" href="<?= base_url() ?>img/so3.png" type="image/x-icon">
     <!-- daterange picker -->
     <link rel="stylesheet" href="<?= base_url('assets') ?>/plugins/daterangepicker/daterangepicker.css">
     <!-- Bootstrap Color Picker -->

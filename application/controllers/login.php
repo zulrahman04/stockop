@@ -29,7 +29,7 @@ class Login extends CI_Controller
             }
         }
 
-        if (!$this->session->userdata('user_role')) {
+        if (!$this->session->userdata('user_id')) {
             $this->load->view('login_form');
         } else {
             redirect(base_url('dashboard'));

@@ -20,6 +20,16 @@ class Histso extends CI_Controller
         // $this->data['data'] = $this->histso->getHist();
         // $this->data['data'] = json_decode($this->curl->simple_get($this->API.'index_get'));
 
+        $data = array(
+            'produk' => '',
+            'toko' => '',
+            'qty' => '',
+            'exp' => '',
+            'ket' => '',
+            'by' => '',
+            'date' => ''
+        );
+        $this->session->set_userdata($data);
         $this->load->view($this->layout, $this->data);
     }
 
@@ -49,5 +59,97 @@ class Histso extends CI_Controller
             "data" => $data
         );
         echo json_encode($output);
+    }
+
+
+    public function produk()
+    {
+
+        $responce = new StdClass;
+
+        $data = array(
+            'produk' => $this->input->post('produk')
+        );
+        $this->session->set_userdata($data);
+        $responce = 'sukses';
+        echo json_encode($responce);
+    }
+
+    public function toko()
+    {
+
+        $responce = new StdClass;
+
+        $data = array(
+            'toko' => $this->input->post('toko')
+        );
+        $this->session->set_userdata($data);
+        $responce = 'sukses';
+        echo json_encode($responce);
+    }
+
+    public function qty()
+    {
+
+        $responce = new StdClass;
+
+        $data = array(
+            'qty' => $this->input->post('qty')
+        );
+        $this->session->set_userdata($data);
+        $responce = 'sukses';
+        echo json_encode($responce);
+    }
+
+    public function exp()
+    {
+
+        $responce = new StdClass;
+
+        $data = array(
+            'exp' => $this->input->post('exp')
+        );
+        $this->session->set_userdata($data);
+        $responce = 'sukses';
+        echo json_encode($responce);
+    }
+
+    public function ket()
+    {
+
+        $responce = new StdClass;
+
+        $data = array(
+            'ket' => $this->input->post('ket')
+        );
+        $this->session->set_userdata($data);
+        $responce = 'sukses';
+        echo json_encode($responce);
+    }
+
+    public function by()
+    {
+
+        $responce = new StdClass;
+
+        $data = array(
+            'by' => $this->input->post('by')
+        );
+        $this->session->set_userdata($data);
+        $responce = 'sukses';
+        echo json_encode($responce);
+    }
+
+    public function date()
+    {
+
+        $responce = new StdClass;
+
+        $data = array(
+            'date' => $this->input->post('date')
+        );
+        $this->session->set_userdata($data);
+        $responce = 'sukses';
+        echo json_encode($responce);
     }
 }

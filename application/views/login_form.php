@@ -25,7 +25,8 @@
                 <div class="card card-primary" style="width: 25rem;">
                     <div class="card-header" style="display: flex; justify-content: center;">
                         <a href="<?= base_url() ?>">
-                            <h1 align="center" class="form-signin-heading"><img src="HRIS.png" height="65" width="155">
+                            <h1 align="center" class="form-signin-heading"><img src="<?= base_url() ?>img/so3.png"
+                                    height="65" width="155">
                             </h1>
                         </a>
                     </div>

@@ -2,7 +2,8 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="<?= base_url() ?>" class="brand-link">
-        <!-- <img src="<?= base_url() ?>img/favicon.png" alt="SSM Logo" class="brand-image img-circle elevation-3" style="opacity: .8"> -->
+        <img src="<?= base_url() ?>img/so2.png" alt="SO Logo" class="brand-image img-circle elevation-3"
+            style="opacity: .8">
         &nbsp;<span class="brand-text font-weight-light">STOCK OP</span>
     </a>
 
