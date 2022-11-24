@@ -8,6 +8,7 @@ class Toko extends CI_Controller
     {
         parent::__construct();
         $this->load->model('toko_model', 'toko');
+        is_logged_in();
     }
 
     public function index()

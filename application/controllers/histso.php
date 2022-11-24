@@ -8,6 +8,7 @@ class Histso extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Histso_model', 'histso');
+        is_logged_in();
     }
 
     public function index()

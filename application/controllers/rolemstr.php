@@ -7,6 +7,7 @@ class Rolemstr extends CI_Controller
     {
         parent::__construct();
         $this->load->model('role_model', 'role');
+        is_logged_in();
     }
 
     public function index()

@@ -7,6 +7,7 @@ class Mnumstr extends CI_Controller
     {
         parent::__construct();
         $this->load->model('mnumstr_model', 'menu');
+        is_logged_in();
     }
 
     public function index()

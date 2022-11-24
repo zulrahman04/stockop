@@ -7,6 +7,7 @@ class Myaccount extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('user_model', 'user');
+		is_logged_in();
 	}
 
 	public function index()

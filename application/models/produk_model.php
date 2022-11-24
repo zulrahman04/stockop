@@ -72,6 +72,11 @@ class Produk_model extends CI_Model
         return $this->db->select('*')->from('produk')->where('id', $id)->get()->row();
     }
 
+    public function getProdukAll()
+    {
+        return $this->db->select('*')->from('produk')->get()->result();
+    }
+
     public function cekProduk($kd)
     {
         return $this->db->select('*')->from('produk')->where('kode_item', $kd)->get()->row();
