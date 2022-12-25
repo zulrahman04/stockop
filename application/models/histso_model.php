@@ -7,6 +7,35 @@ class Histso_model extends CI_Model
         parent::__construct();
     }
 
+    public function get_data($limit, $offset, $sort, $order, $search)
+    {
+        $this->db->select('*');
+        $this->db->from('tr_hist');
+        if ($search != null) {
+            $arrsearch = json_decode($search);
+            foreach ($arrsearch as $key => $value) {
+                $this->db->like($key, $value);
+            }
+        }
+
+        $query = $this->db->order_by($sort, $order)->limit($limit, $offset)->get();
+        return  $query->result();
+        // return $this->db->last_query();
+    }
+
+    public function get_num_rows($search)
+    {
+        if ($search != null) {
+            $arrsearch = json_decode($search);
+            foreach ($arrsearch as $key => $value) {
+                $this->db->like($key, $value);
+            }
+        }
+
+
+        return $this->db->get("tr_hist")->num_rows();
+    }
+
     var $order = array('create_date' => 'desc');
     var $column_order = array('id', 'nama_produk', 'toko', 'qty', 'expire', 'keterangan', 'create_by', 'create_date');
     var $column_search = array('id', 'nama_produk', 'toko', 'qty', 'expire', 'keterangan', 'create_by', 'create_date');

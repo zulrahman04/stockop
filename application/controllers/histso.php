@@ -36,6 +36,42 @@ class Histso extends CI_Controller
 
     public function listHist()
     {
+
+        $vars = $this->input->get(null, TRUE);
+        //var_dump($vars);
+
+
+        if (isset($vars['filter'])) {
+            $SEARCH_VALUE = $vars['filter'];
+        } else {
+            $SEARCH_VALUE = null;
+        }
+        // var_dump($vars['filter']);
+
+        $LIMIT_VALUE = $vars['limit'];
+        $OFFSET_VALUE = $vars['offset'];
+        $SORT_VALUE = $vars['sort'];
+        $ORDER_VALUE = $vars['order'];
+        //var_dump($LIMIT_VALUE);
+        //var_dump($OFFSET_VALUE);
+        //var_dump($SORT_VALUE);
+        //var_dump($ORDER_VALUE);
+
+
+        $totalRows = $this->histso->get_num_rows($SEARCH_VALUE);
+        $item = $this->histso->get_data($LIMIT_VALUE, $OFFSET_VALUE, $SORT_VALUE, $ORDER_VALUE, $SEARCH_VALUE);
+        $data = array(
+            'total' => $totalRows,
+            'rows' => $item
+        );
+
+        echo json_encode($data);
+
+        //var_dump($data);
+    }
+
+    public function listHist2()
+    {
         $list = $this->histso->get_datatables();
         $data = array();
         $no = $_POST['start'] + 1;
@@ -108,7 +144,7 @@ class Histso extends CI_Controller
         $responce = new StdClass;
 
         $data = array(
-            'exp' => $this->input->post('exp')
+            'exp' => date("Y-m-d", strtotime($this->input->post('exp')))
         );
         $this->session->set_userdata($data);
         $responce = 'sukses';
@@ -147,7 +183,7 @@ class Histso extends CI_Controller
         $responce = new StdClass;
 
         $data = array(
-            'date' => $this->input->post('date')
+            'date' => date("Y-m-d", strtotime($this->input->post('date')))
         );
         $this->session->set_userdata($data);
         $responce = 'sukses';
