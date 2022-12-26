@@ -20,13 +20,13 @@
             <thead>
                 <tr>
                     <th data-formatter="runningFormatterServerSide" data-field="no">No</th>
-                    <th data-field="nama_produk" data-filter-control="input">Produk</th>
-                    <th data-field="toko" data-filter-control="input">toko</th>
-                    <th data-field="qty" data-filter-control="input">qty</th>
-                    <th data-field="expire" data-filter-control="datepicker">expire</th>
-                    <th data-field="keterangan" data-filter-control="input">keterangan</th>
-                    <th data-field="create_by" data-filter-control="input">create by</th>
-                    <th data-field="create_date" data-filter-control="datepicker">create date</th>
+                    <th data-field="nama_produk" data-sortable="true" data-filter-control="input">Produk</th>
+                    <th data-field="toko" data-sortable="true" data-filter-control="input">toko</th>
+                    <th data-field="qty" data-sortable="true" data-filter-control="input">qty</th>
+                    <th data-field="expire" data-sortable="true" data-filter-control="datepicker">expire</th>
+                    <th data-field="keterangan" data-sortable="true" data-filter-control="input">keterangan</th>
+                    <th data-field="create_by" data-sortable="true" data-filter-control="input">create by</th>
+                    <th data-field="create_date" data-sortable="true" data-filter-control="datepicker">create date</th>
                 </tr>
             </thead>
         </table>

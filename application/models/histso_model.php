@@ -32,7 +32,6 @@ class Histso_model extends CI_Model
             }
         }
 
-
         return $this->db->get("tr_hist")->num_rows();
     }
 
