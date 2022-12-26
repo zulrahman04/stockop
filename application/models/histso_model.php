@@ -9,7 +9,7 @@ class Histso_model extends CI_Model
 
     public function get_data($limit, $offset, $sort, $order, $search)
     {
-        $this->db->select('nama_produk, toko, qty, DATE_FORMAT(expire,"%d-%m-%Y") as expire, keterangan, create_by, DATE_FORMAT(create_date,"%H:%i:%s %d-%m-%Y") as create_date');
+        $this->db->select('nama_produk, toko, qty, DATE_FORMAT(expire,"%d/%m/%Y") as expire, keterangan, create_by, DATE_FORMAT(create_date,"%H:%i:%s %d/%m/%Y") as create_date');
         $this->db->from('tr_hist');
         if ($search != null) {
             $arrsearch = json_decode($search);
