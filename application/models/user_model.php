@@ -5,7 +5,7 @@ class User_model extends CI_Model
     public function getListUser()
     {
         $this->db->select('*');
-        $this->db->from('user')->where("nama != 'developer'");
+        $this->db->from('user')->where("role != 'DEV'");
 
         $query = $this->db->get();
 
@@ -103,6 +103,25 @@ class User_model extends CI_Model
         $this->db->delete('user');
 
         // print_r($this->db->last_query()); die();
+
+        if ($this->db->trans_status() === FALSE) {
+            $this->db->trans_rollback();
+            return false;
+        } else {
+            $this->db->trans_commit();
+            return true;
+        }
+    }
+    public function resetPassword($id)
+    {
+        $this->db->trans_begin();
+
+        $data = array(
+            'password' => md5('123456'),
+            'update_by' => $this->session->userdata('username')
+        );
+        $this->db->where('id', $id);
+        $this->db->update('user', $data);
 
         if ($this->db->trans_status() === FALSE) {
             $this->db->trans_rollback();

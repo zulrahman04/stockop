@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Stok OP</title>
+    <link rel="icon" href="<?= base_url() ?>img/so3.png" type="image/x-icon">
 
     <!-- SweetAlert2 -->
     <link rel="stylesheet" href="<?= base_url('assets') ?>/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">

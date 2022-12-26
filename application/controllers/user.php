@@ -97,4 +97,21 @@ class User extends CI_Controller
       echo json_encode($responce);
     }
   }
+
+  public function resetPassword()
+  {
+    $id = $this->input->post('id');
+
+    $responce = new StdClass;
+
+    if ($this->user->resetPassword($id)) {
+      $responce->result = 'Berhasil';
+      $responce->message = 'Reset Password berhasil.';
+      echo json_encode($responce);
+    } else {
+      $responce->result = 'Gagal';
+      $responce->message = 'Reset Password gagal.';
+      echo json_encode($responce);
+    }
+  }
 }

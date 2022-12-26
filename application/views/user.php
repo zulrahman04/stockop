@@ -138,6 +138,11 @@
                             <select class="form-control" id="status2" name="status2">
                             </select>
                         </div>
+                        <div class="form-group">
+                            <label>Reset Password</label>
+                            <button type="button" id="reset" onclick="resetPassword()" class="btn btn-danger">Reset</button>
+                            </select>
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer justify-content-between">
@@ -157,7 +162,38 @@
         "responsive": true,
         "autoWidth": false,
     })
-
+    function resetPassword() {
+        Swal.fire({
+            title: 'Anda yakin?',
+            text: "Password akan menjadi '123456'",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.value) {
+                $.ajax({
+                    dataType: "json",
+                    type: 'POST',
+                    url: '<?= base_url() ?>user/resetPassword',
+                    data: {
+                        id: $("#id").val()
+                    },
+                    success: function(response) {
+                        if (response.result == 'Berhasil') {
+                            successtr(response.message)
+                        } else {
+                            erortr(response.message)
+                        }
+                    },
+                    error: function() {
+                        error()
+                    }
+                });
+            }
+        })
+    }
     function formEdit(username) {
         $('#id').val('')
         $('#username2').val('')

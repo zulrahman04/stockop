@@ -17,20 +17,6 @@ class Histso extends CI_Controller
         $this->data['menuname'] = 'History SO';
         $this->data['submenuname'] = '';
         $this->data['page'] = 'histso';
-
-        // $this->data['data'] = $this->histso->getHist();
-        // $this->data['data'] = json_decode($this->curl->simple_get($this->API.'index_get'));
-
-        $data = array(
-            'produk' => '',
-            'toko' => '',
-            'qty' => '',
-            'exp' => '',
-            'ket' => '',
-            'by' => '',
-            'date' => ''
-        );
-        $this->session->set_userdata($data);
         $this->load->view($this->layout, $this->data);
     }
 
@@ -38,7 +24,6 @@ class Histso extends CI_Controller
     {
 
         $vars = $this->input->get(null, TRUE);
-        //var_dump($vars);
 
 
         if (isset($vars['filter'])) {
@@ -46,16 +31,13 @@ class Histso extends CI_Controller
         } else {
             $SEARCH_VALUE = null;
         }
-        // var_dump($vars['filter']);
-
-        $LIMIT_VALUE = $vars['limit'];
+        $LIMIT_VALUE = null;
+        if (isset($vars['limit'])) {
+            $LIMIT_VALUE = $vars['limit'];
+        }
         $OFFSET_VALUE = $vars['offset'];
         $SORT_VALUE = $vars['sort'];
         $ORDER_VALUE = $vars['order'];
-        //var_dump($LIMIT_VALUE);
-        //var_dump($OFFSET_VALUE);
-        //var_dump($SORT_VALUE);
-        //var_dump($ORDER_VALUE);
 
 
         $totalRows = $this->histso->get_num_rows($SEARCH_VALUE);
@@ -66,8 +48,6 @@ class Histso extends CI_Controller
         );
 
         echo json_encode($data);
-
-        //var_dump($data);
     }
 
     public function listHist2()
@@ -98,95 +78,4 @@ class Histso extends CI_Controller
         echo json_encode($output);
     }
 
-
-    public function produk()
-    {
-
-        $responce = new StdClass;
-
-        $data = array(
-            'produk' => $this->input->post('produk')
-        );
-        $this->session->set_userdata($data);
-        $responce = 'sukses';
-        echo json_encode($responce);
-    }
-
-    public function toko()
-    {
-
-        $responce = new StdClass;
-
-        $data = array(
-            'toko' => $this->input->post('toko')
-        );
-        $this->session->set_userdata($data);
-        $responce = 'sukses';
-        echo json_encode($responce);
-    }
-
-    public function qty()
-    {
-
-        $responce = new StdClass;
-
-        $data = array(
-            'qty' => $this->input->post('qty')
-        );
-        $this->session->set_userdata($data);
-        $responce = 'sukses';
-        echo json_encode($responce);
-    }
-
-    public function exp()
-    {
-
-        $responce = new StdClass;
-
-        $data = array(
-            'exp' => date("Y-m-d", strtotime($this->input->post('exp')))
-        );
-        $this->session->set_userdata($data);
-        $responce = 'sukses';
-        echo json_encode($responce);
-    }
-
-    public function ket()
-    {
-
-        $responce = new StdClass;
-
-        $data = array(
-            'ket' => $this->input->post('ket')
-        );
-        $this->session->set_userdata($data);
-        $responce = 'sukses';
-        echo json_encode($responce);
-    }
-
-    public function by()
-    {
-
-        $responce = new StdClass;
-
-        $data = array(
-            'by' => $this->input->post('by')
-        );
-        $this->session->set_userdata($data);
-        $responce = 'sukses';
-        echo json_encode($responce);
-    }
-
-    public function date()
-    {
-
-        $responce = new StdClass;
-
-        $data = array(
-            'date' => date("Y-m-d", strtotime($this->input->post('date')))
-        );
-        $this->session->set_userdata($data);
-        $responce = 'sukses';
-        echo json_encode($responce);
-    }
 }
