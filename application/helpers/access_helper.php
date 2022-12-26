@@ -27,6 +27,8 @@ function is_logged_in()
         ]);
         if ($querymenu) {
             if ($userAccess->num_rows() < 1) {
+                redirect('403_forbidden');
+            }elseif(!$querymenu){
                 redirect('404_override');
             }
         }

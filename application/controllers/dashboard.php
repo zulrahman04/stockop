@@ -23,30 +23,6 @@ class Dashboard extends CI_Controller
         $this->load->view($this->layout, $this->data);
     }
 
-    public function test()
-    {
-        $this->data['pagetitle'] = $this->session->userdata('dashboardname');
-        $this->data['menuname'] = $this->session->userdata('dashboardname');
-        $this->data['submenuname'] = '';
-        $this->data['page'] = 'test';
-
-        $this->data['data'] = $this->dashboard->getToko();
-
-        $this->load->view($this->layout, $this->data);
-    }
-
-    public function test2()
-    {
-        $this->data['pagetitle'] = $this->session->userdata('dashboardname');
-        $this->data['menuname'] = $this->session->userdata('dashboardname');
-        $this->data['submenuname'] = '';
-        $this->data['page'] = 'test2';
-
-        $this->data['data'] = $this->dashboard->getToko();
-
-        $this->load->view($this->layout, $this->data);
-    }
-
     public function inputso()
     {
         $this->data['pagetitle'] = $this->session->userdata('dashboardname');

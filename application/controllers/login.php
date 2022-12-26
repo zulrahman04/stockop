@@ -38,8 +38,7 @@ class Login extends CI_Controller
 
     public function error()
     {
-        //$this->load->view('login_form');
-        $this->load->view('login');
+        redirect();
     }
 
     public function logout()
@@ -48,8 +47,13 @@ class Login extends CI_Controller
         redirect();
     }
 
-    public function block()
+    public function override()
     {
         $this->load->view('404_page');
+    }
+
+    public function forbidden()
+    {
+        $this->load->view('403_page');
     }
 }
