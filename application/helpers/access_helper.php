@@ -25,10 +25,12 @@ function is_logged_in()
             'accs_menu' => $menu_id,
             'accs_tf' => '1'
         ]);
+
         if ($querymenu) {
             if ($userAccess->num_rows() < 1) {
                 redirect('403_forbidden');
-            }elseif(!$querymenu){
+            }
+            elseif(!$querymenu){
                 redirect('404_override');
             }
         }
