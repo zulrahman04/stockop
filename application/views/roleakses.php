@@ -15,49 +15,7 @@ $base_url = base_url();
                                 </tr>
                             </thead>
                             <tbody>
-                        <?php $no = 1;
-                            $code = $this->uri->segment(3);    
-                            foreach ($role as $key) {
-                                    $sub_menu = $this->db->query(" SELECT
-                                    mnu_mstr.mnu_name
-                                    , mnu_mstr.mnu_parent
-                                    , mnu_mstr.mnu_id
-                                    , accs_mstr.accs_tf
-                                FROM
-                                    accs_mstr
-                                    INNER JOIN mnu_mstr
-                                        ON (accs_mstr.accs_menu = mnu_mstr.mnu_id) WHERE accs_role = '$code' and  mnu_parent = '$key->mnu_id' and mnu_parent !='0'")->result();    
-                                ?>
-                                <tr>
-                                    <td><?= $no; ?></td>
-                                    <td>
-                                        <?= $key->mnu_name; ?>
-                                        <table>
-                                            <?php 
-                                            foreach ($sub_menu as $key2) {?>
-                                                <tr>
-                                                    <td style="width: 3%;"></td>
-                                                <td style="width: 100%;"><?= $key2->mnu_name; ?> </td>                                    
-                                                <td ><?php if ($key2->accs_tf == '0') {?>
-                                                    <input type="checkbox" id="<?= $key->mnu_id?>" name="<?= $key2->mnu_id?>" value="<?= $key2->mnu_id?>" onclick="check(<?= $key2->mnu_id?>,'<?= $code?>')">
-                                                    <?php }else{?>
-                                                    <input type="checkbox" id="<?= $key->mnu_id?>" name="<?= $key2->mnu_id?>" value="<?= $key2->mnu_id?>" checked onclick="check(<?= $key2->mnu_id?>,'<?= $code?>')">
-                                                    <?php }?></td>
-                                                </tr>
-                                            <?php 
-                                            }?>
-                                        </table>
-                                        <td><?php if ($key->accs_tf == '0') {?>
-                                            <input type="checkbox" id="box" name="<?= $key->mnu_id?>" value="<?= $key->mnu_id?>" onclick="check(<?= $key->mnu_id?>,'<?= $code?>')">
-                                            <?php }else{?>
-                                            <input type="checkbox" id="box" name="<?= $key->mnu_id?>" value="<?= $key->mnu_id?>" onclick="check(<?= $key->mnu_id?>,'<?= $code?>')" checked>
-                                            <?php }?>
-                                        </td>
-                                    </td>
-                                </tr>
-                                <?php $no++;
-                            } ?> 
-
+                                <?= $dt ?>
                             </tbody>
                         </table>
                         </div>

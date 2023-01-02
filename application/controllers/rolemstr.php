@@ -22,6 +22,7 @@ class Rolemstr extends CI_Controller
         $this->load->view($this->layout, $this->data);
     }
 
+
     public function addRole()
     {
         $cdrole = $this->input->post('cdrole');
@@ -87,7 +88,7 @@ class Rolemstr extends CI_Controller
         }
     }
 
-    public function access($code)
+    public function accessold($code)
     {
         $this->data['pagetitle'] = "Akses Menu";
         $this->data['menuname'] = "System";
@@ -95,6 +96,56 @@ class Rolemstr extends CI_Controller
         $this->data['page'] = "roleakses";
 
         $this->data['role'] = $this->role->accessrole($code);
+
+        $this->load->view($this->layout, $this->data);
+    }
+
+    
+    public function access($code)
+    {
+        $this->data['pagetitle'] = "Akses Menu";
+        $this->data['menuname'] = "System";
+        $this->data['submenuname'] = "Akses Menu";
+        $this->data['page'] = "roleakses";
+
+        $no = 1;
+        $dt ='';
+        foreach ($this->role->accessrole($code) as $key) {
+            $menu = $this->role->getMenuRole($code,$key->mnu_id);
+            $dt .= "<tr>";
+                $dt .= "<td>$no</td>";
+                $dt .= "<td>$key->mnu_name</td>";
+                $dt .= "<td>";
+                    $dt .= "<table>";
+                    foreach ($menu as $key2) {
+                        $dt .= "<tr>";
+                            $dt .= "<td style='width: 3%;'></td>";
+                            $dt .= "<td style='width: 100%;'>$key2->mnu_name</td>";
+                            $dt .= "<td style='width: 100%;'>";
+                                if ($key2->accs_tf == '0') {
+                                    $dt .= "<input type='checkbox' id='$key->mnu_id' name='$key2->mnu_id' value='$key2->mnu_id' onclick='check($key2->mnu_id,\"$code\")'/>";
+                                }
+                                else{
+                                    $dt .= "<input type='checkbox' id='$key->mnu_id' name='$key2->mnu_id' value='$key2->mnu_id' checked onclick='check($key2->mnu_id, \"$code\")'/>";
+                                }
+                            $dt .= "</td>";
+                        $dt .= "</tr>";
+                    }
+                    $dt .= "</table>";
+                    $dt .= "<td>";
+                        if ($key->accs_tf == '0') {
+                            $dt .= "<input type='checkbox' id='box' name='$key->mnu_id' value='$key->mnu_id' onclick='check($key->mnu_id,\"$code\")'>";
+                        }else{
+                            $dt .= "<input type='checkbox' id='box' name='$key->mnu_id' value='$key->mnu_id' checked onclick='check( $key->mnu_id,\"$code\")'>";
+                        }
+                        $dt .= "</td>";
+                $dt .= "</td>";
+            $dt .= "</tr>";
+
+            $no++;
+        }
+
+        $this->data['dt'] = $dt;
 
         $this->load->view($this->layout, $this->data);
     }

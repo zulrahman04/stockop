@@ -37,6 +37,19 @@ class Role_model extends CI_Model
         }
     }
 
+    public function getMenuRole($code,$mnu_id){
+        
+        return $this->db->query(" SELECT
+        mnu_mstr.mnu_name
+        , mnu_mstr.mnu_parent
+        , mnu_mstr.mnu_id
+        , accs_mstr.accs_tf
+        FROM
+        accs_mstr
+        INNER JOIN mnu_mstr
+            ON (accs_mstr.accs_menu = mnu_mstr.mnu_id) WHERE accs_role = '$code' and  mnu_parent = '$mnu_id' and mnu_parent !='0'")->result();
+    }
+
     public function getEditRole($id)
     {
         return $this->db->select('rol_code,rol_name,rol_status')->from('rol_mstr')->where('id', $id)->get()->row();

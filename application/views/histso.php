@@ -1,10 +1,11 @@
-<link href="<?= base_url('assets/'); ?>bootstrap-table/dist/bootstrap-table.min.css" rel="stylesheet">
 
-<link rel="stylesheet" href="<?= base_url('assets/'); ?>icons-1.10.2/font/bootstrap-icons.css">
+
+<link href="<?= base_url('assets/'); ?>bootstrap-table/dist/bootstrap-table.min.css" rel="stylesheet">
 <script src="<?= base_url('assets/'); ?>bootstrap-table/dist/bootstrap-table.js"></script>
 
-<script
-    src="<?= base_url('assets/'); ?>bootstrap-table/dist/extensions/filter-control/bootstrap-table-filter-control.js">
+<link rel="stylesheet" href="<?= base_url('assets/'); ?>icons-1.10.2/font/bootstrap-icons.css">
+<link rel="stylesheet" type="text/css" href="<?= base_url('assets/'); ?>bootstrap-table/dist/extensions/filter-control/bootstrap-table-filter-control.css">
+<script src="<?= base_url('assets/'); ?>bootstrap-table/dist/extensions/filter-control/bootstrap-table-filter-control.min.js">
 </script>
 <script src="<?= base_url('assets/'); ?>dist/bootstrap.bundle.min.js"></script>  
 <div class="card">
@@ -23,7 +24,7 @@
                     <th data-field="nama_produk" data-sortable="true" data-filter-control="input">Produk</th>
                     <th data-field="toko" data-sortable="true" data-filter-control="input">toko</th>
                     <th data-field="qty" data-sortable="true" data-filter-control="input">qty</th>
-                    <th data-field="expire" data-sortable="true" data-filter-control="datepicker">expire</th>
+                    <th data-field="expire" data-sortable="true" data-filter-control="datepicker" data-filter-datepicker-options='{"autoclose":true, "clearBtn": true, "todayHighlight": true, "orientation": "top"}'>expire</th>
                     <th data-field="keterangan" data-sortable="true" data-filter-control="input">keterangan</th>
                     <th data-field="create_by" data-sortable="true" data-filter-control="input">create by</th>
                     <th data-field="create_date" data-sortable="true" data-filter-control="datepicker">create date</th>
@@ -36,15 +37,8 @@
 <script>
 
 
-(function() {
-    $('#table').bootstrapTable({
-        data: AvailableSessions,
-        //height
-        height: 500,
-        //adding native datepicker options
-        ['data-filter-datepicker-options']: '{"startDate":' + new Date(AvailableSessions[0].Date) +
-            ', "endDate":' + new Date(AvailableSessions[AvailableSessions.length - 1].Date) + '}'
-    })
+$(function() {
+    $('#table').bootstrapTable()
 })
 
 function runningFormatterServerSide(value, row, index) {
