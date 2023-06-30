@@ -1,4 +1,11 @@
 ###################
+FYI
+###################
+Project ini untuk gudang toko kosmetik diperuntukan untuk stockopname setiap hari dari gudang toko ke etalase dengan menggunakan barcode. 
+library yang dipakai untuk scanner barcode yaitu : ZXing 
+namun library tsb. mempunyai kekurangan yaitu hanya bisa menggunakan camera fix focus, dan untuk camera hp tergangu oleh auto fokusnya untuk jarak yang dekat.
+
+###################
 What is CodeIgniter
 ###################
 
